@@ -4,6 +4,8 @@ import Button from '../components/Button';
 import scale from '../config/scale';
 import config from '../config';
 import * as screenName from '../router/screenNames';
+import { insertAllTodoList, queryAllTodoList, deleteAllTodoList } from '../databases/allSchemas';
+import Data from '../utils/dummy-data/output.json';
 
 export default ({navigation, route, database}) => {
   const [isSync, setIsSync] = React.useState(false);
@@ -29,11 +31,19 @@ export default ({navigation, route, database}) => {
         placeholder={'Sync'}
         buttonStyle={[styles.buttonSync, {marginTop: scale(5)}]}
         textStyle={styles.buttonText}
-        onPress={() => console.log('sync function not set yet')}
+        onPress={() => {
+            insertAllTodoList(Data)
+        }}
         disabled={isSync}
       />
       <Button
-        onPress={() => console.log('reset database function not set yet')}
+        onPress={() => queryAllTodoList()}
+        buttonStyle={[styles.buttonSync, {marginTop: scale(5)}]}
+        textStyle={styles.saveButtonText}
+        placeholder={'Get All Database'}
+      />
+      <Button
+        onPress={() => deleteAllTodoList()}
         buttonStyle={[styles.buttonSync, {marginTop: scale(5)}]}
         textStyle={styles.saveButtonText}
         placeholder={'Reset Database'}

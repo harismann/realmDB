@@ -5,8 +5,9 @@ import scale from '../../../config/scale';
 import config from '../../../config';
 import {getDate, getTime} from '../../../utils/DateFormat';
 import styles from '../styles/ListHazardStyle';
+import {exp} from 'react-native-reanimated';
 
-export const HazardItem = ({hazards, onPress}) => (
+const HazardItem = ({hazards, onPress}) => (
   <TouchableOpacity onPress={() => onPress(hazards)} style={styles.listHazard}>
     <View style={styles.iconListHazard}>
       <Icon
@@ -25,3 +26,5 @@ export const HazardItem = ({hazards, onPress}) => (
     </View>
   </TouchableOpacity>
 );
+
+export default HazardItem
